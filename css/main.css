@@ -1,0 +1,32 @@
+/* :root{
+    --secondaryColor:#e12220;
+}
+ */
+
+.hero_bg {
+  background-color: brown;
+}
+
+.colour_bg {
+  background-color: #e12220 !important;
+}
+
+.about__hero_container {
+  background-image: url("../img/main/hero/about-hero.jpg");
+  background-position: top;
+  background-attachment: fixed;
+  opacity: 0.6;
+  height: 100vh;
+}
+
+.hero__text_header {
+  color: #fff;
+}
+
+.cta__aboutus_container {
+  margin-top: 10rem;
+}
+
+.cta__aboutus_text {
+  text-align: justify;
+}
