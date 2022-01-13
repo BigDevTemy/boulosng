@@ -1,19 +1,28 @@
-<section class="bg-top-center bg-repeat-0 pt-5 bg-dark" style="background-image: url(img/car-finder/home/hero-bg.png); background-size: cover; background-position:center; background-repeat:no-repeat; height: 100vh">
-  <div class="container pt-5">
-    <div class="row pt-lg-4 pt-xl-5">
-      <div class="col-lg-4 col-md-5 pt-3 pt-md-4 pt-lg-5">
-        <h1 class="display-4 text-light pb-2 mb-4 me-md-n5">Nigeria's Leading Vehicle Manufacturers.</h1>
-        <p class="fs-lg text-light opacity-70">
-        Boulos Enterprises Limited offers the public high quality products carefully made to suit the Nigerian climate and road conditions.
-        </p>
-      </div>
-      <!-- <div class="col-lg-8 col-md-7 pt-md-5"><img class="d-block mt-4 ms-auto" src="img/main/hero/hero-bg2.png" width="800" alt="Boulos Bike"></div> -->
+<!-- background-image: url(img/car-finder/home/hero-bg.png); background-size: cover; background-position:center;  -->
+<div id="carouselExampleIndicators" class="carousel slide" style="margin-top:10vh" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+
+    <div class="carousel-item active">
+      <img src="img/bikes/bike.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/bikes/bike2.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/bikes/bike3.png" class="d-block w-100" alt="...">
     </div>
   </div>
-  <div class="container mt-4 mt-sm-3 mt-lg-n3 pb-5 mb-md-4">
-    <!-- Tabs-->
-
-    <!-- Form group-->
-
-  </div>
-</section>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

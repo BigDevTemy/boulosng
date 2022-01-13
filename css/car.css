@@ -1,0 +1,62 @@
+body{
+	margin: 0px;
+	overflow-y: hidden;
+	background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+}
+
+.night{
+	height: 80vh;
+	width: 70vw;
+	margin: 5rem auto;
+	box-shadow: 1px 2px 60px rgba(0,0,0,0.4);
+	background-color: black;
+	background-size: cover;
+	position: relative;
+	overflow-x: hidden;
+}
+.surface{
+	width: 500%;
+	height: 250px;
+	display: block;
+	position: absolute;
+	background:url('/boulos_ng/img/bikes/road.jpg');
+	background-repeat: repeat-x;
+	bottom: 0%;
+	left: 0%;
+	
+	
+}
+.car{
+	bottom: 10%;
+	position: absolute;
+	left:10px;
+	
+}
+
+.car_animation{
+	animation: moveBike 1s linear infinite;
+}
+
+.surface_animation{
+	animation: moveright 6s linear infinite;
+}
+
+
+@keyframes moveright{
+	100%{
+		transform: translateX(-2950px);
+	}
+}
+
+@keyframes moveBike{
+  100%{
+    transform: translateY(-1px);
+  }
+  50%{
+    transform: translateY(2px);
+  }
+  0%{
+    transform: translateY(-1px);
+  }
+}
+

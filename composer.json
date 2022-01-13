@@ -1,0 +1,15 @@
+{
+    "name": "vincent/boulos_ng",
+    "autoload": {
+        "psr-4": {
+            "Vincent\\BoulosNg\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andre",
+            "email": "quadhay@gmail.com"
+        }
+    ],
+    "require": {}
+}

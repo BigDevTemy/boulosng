@@ -1,6 +1,7 @@
-const intro__text = `<h1 class="h2 text-dark">Introduction</h1>
-<div class="text-dark pt-1">Get to know us better</div>
-<hr style="border: 0.5px solid #e12220; width: 70%; opacity: 0.6;" />
+const introText = `<div class="introContainer">
+<h1 class="h2 text-light">Introduction</h1>
+<div class="text-light pt-1">Get to know us better</div>
+<hr style="border: 0.5px solid #d3d3d3; opacity: 0.6;" class="mt-4" />
 <div style="text-align: justify;">
   <p class="introduction__text mt-4">
     Boulos Enterprises Limited offers the public high quality products carefully made to suit the Nigerian
@@ -19,22 +20,23 @@ const intro__text = `<h1 class="h2 text-dark">Introduction</h1>
     This has improved our friendship with customers thereby giving BEL a competitive edge over other
     automotive products in the market.
   </p>
+</div>
 </div>`;
 
-const visionText = `
-<h1 class="h2 text-dark">Introduction</h1>
-<div class="text-dark pt-1">Get to know us better</div>
-<hr style="border: 0.5px solid #e12220; width: 70%; opacity: 0.6;" />
+const visionText = `<div class="visionContainer">
+<h1 class="h2 text-light">Our Vision</h1>
+<div class="text-light pt-1">Get to know what we're driving towards</div>
+<hr style="border: 0.5px solid #d3d3d3; opacity: 0.6;" class="mt-4" />
 <div style="text-align: justify;">
   <p class="introduction__text mt-4">
   To be a leading company in Africa providing quality products and services to its numerous customers and upholding distinction in all we do.
   </p>
-</div>`;
+</div></div>`;
 
 const missionText = `
-<h1 class="h2 text-dark">Introduction</h1>
-<div class="text-dark pt-1">Get to know us better</div>
-<hr style="border: 0.5px solid #e12220; width: 70%; opacity: 0.6;" />
+<h1 class="h2 text-light">Our Mission</h1>
+<div class="text-light pt-1">How we plan to get there</div>
+<hr style="border: 0.5px solid #d3d3d3; opacity: 0.6;" class="mt-4" />
 <div style="text-align: justify;">
   <p class="introduction__text mt-4">
   To be a leading company in terms of market share, administering our intellectual capital effectively and utilizing modern technology for the benefit of the society and environment.
@@ -42,17 +44,24 @@ const missionText = `
 </div>`;
 
 const valueText = `
-<h1 class="h2 text-dark">Introduction</h1>
-<div class="text-dark pt-1">Get to know us better</div>
-<hr style="border: 0.5px solid #e12220; width: 70%; opacity: 0.6;" />
+<h1 class="h2 text-light">Our Values</h1>
+<div class="text-light pt-1">What we stand for as an organisation</div>
+<hr style="border: 0.5px solid #d3d3d3; opacity: 0.6;" class="mt-4" />
 <div style="text-align: justify;">
-  
+  <ul class="mt-4">
+    <li>Innovation</li>
+    <li>Professionalism</li>
+    <li>Customer Focus</li>
+    <li>Solid Responsibility</li>
+    <li>Team Spirit</li>
+    <li>Integrity</li>
+  </ul>
 </div>`;
 
 const historyText = `
-<h1 class="h2 text-dark">Introduction</h1>
-<div class="text-dark pt-1">Get to know us better</div>
-<hr style="border: 0.5px solid #e12220; width: 70%; opacity: 0.6;" />
+<h1 class="h2 text-light">Our History</h1>
+<div class="text-light pt-1">The Journey: How it all started</div>
+<hr style="border: 0.5px solid #d3d3d3; opacity: 0.6;" class="mt-4" />
 <div style="text-align: justify;">
   <p class="introduction__text mt-4">
   In 1936, a gentleman by the name of Georges Boulos opened a small Jewellery business on Broad Street, Lagos Nigeria.  This small business, unknown at that time, was to be the foundations of a family empire and birth of Boulos Enterprises Limited and other subsidiaries under the umbrella of the Boulos Group.
@@ -77,42 +86,56 @@ const historyText = `
   </p>
 </div>`;
 
-let contentBody;
-var x = document.querySelector("aside");
-x.addEventListener("click", function (e) {
-  console.log(e.target.innerText);
+// Selecting the Element
+const aboutContainer = document.querySelector(".aboutContainer");
+const introItem = document.querySelector(".introItem");
+const visionItem = document.querySelector(".visionItem");
+const missionItem = document.querySelector(".missionItem");
+const valuesItem = document.querySelector(".valuesItem");
+const historyItem = document.querySelector(".historyItem");
+
+// Load the Introduction Text on load
+window.addEventListener("load", () => {
+  document.querySelector(".card-nav-link").classList.add("active");
+  document.querySelector(".aboutContainer").insertAdjacentHTML("afterbegin", introText);
 });
+
+let parentElement = document.querySelector("#sidebarContainer");
+parentElement.addEventListener("click", function (e) {
+  let check_active = parentElement.querySelectorAll(".card-nav-link");
+
+  for (var i = 0; i < check_active.length; i++) {
+    if (check_active[i].classList != "active") {
+      check_active[i].classList.remove("active");
+    }
+  }
+  e.target.classList.add("active");
+
+  if (e.target.innerText === "Introduction") {
+    document.getElementById("mybody").innerHTML = "";
+    document.querySelector(".aboutContainer").insertAdjacentHTML("afterbegin", introText);
+  }
+  if (e.target.innerText === "Our Vision") {
+    document.getElementById("mybody").innerHTML = "";
+    document.querySelector(".aboutContainer").insertAdjacentHTML("afterbegin", visionText);
+  }
+  if (e.target.innerText === "Our Mission") {
+    document.getElementById("mybody").innerHTML = "";
+    document.querySelector(".aboutContainer").insertAdjacentHTML("afterbegin", missionText);
+  }
+  if (e.target.innerText === "Our Values") {
+    document.getElementById("mybody").innerHTML = "";
+    document.querySelector(".aboutContainer").insertAdjacentHTML("afterbegin", valueText);
+  }
+  if (e.target.innerText === "Our History") {
+    document.getElementById("mybody").innerHTML = "";
+    document.querySelector(".aboutContainer").insertAdjacentHTML("afterbegin", historyText);
+  }
+});
+
 //const sidebarParent = document.querySelector("aside").addEventListener("click", (e) => {
 //contentBody = e.target.innerText;
 
 // console.log(contentBody);
-
-// switch (contentBody) {
-//   case "Introduction":
-//     document.querySelector(".aboutContainer").insertAdjacentHTML("afterbegin", intro__text);
-//     break;
-
-//   case "Our Vision":
-//     document.querySelector(".aboutContainer").insertAdjacentHTML("afterbegin", visionText);
-//     break;
-
-//   case "Our Misson":
-//     document.querySelector(".aboutContainer").insertAdjacentHTML("afterbegin", missionText);
-//     break;
-
-//   case "Our Values":
-//     document.querySelector(".aboutContainer").insertAdjacentHTML("afterbegin", valueText);
-//     break;
-
-//   case "Our History":
-//     document.querySelector(".aboutContainer").insertAdjacentHTML("afterbegin", historyText);
-//     break;
-
-//   default:
-//     break;
-// }
-//});
-
-// document.querySelector(".aboutContainer").insertAdjacentHTML("afterbegin", intro__text);
 
 console.log("==================TEST=====================");
