@@ -37,10 +37,10 @@
   </div>
 <footer class="footer" style="background-color:#000">
   <div class="border-bottom border-light py-4">
-    <div class="container d-sm-flex align-items-center justify-content-between"><a class="d-inline-block" href="real-estate-home.html"><img src="img/logo/boulos.png" width="116" alt="BOULOS ENGINEERING"></a>
+    <div class="container d-sm-flex align-items-center justify-content-between"><a class="d-inline-block" href="/boulos_ng"><img src="img/logo/boulos.png" width="116" alt="BOULOS ENGINEERING"></a>
       <div class="d-flex pt-3 pt-sm-0">
         <div class="dropdown ms-n3">
-          <button class="btn btn-light btn-link btn-sm dropdown-toggle fw-normal py-2" type="button" data-bs-toggle="dropdown"><i class="fi-globe me-2"></i>Eng</button>
+          <!-- <button class="btn btn-light btn-link btn-sm dropdown-toggle fw-normal py-2" type="button" data-bs-toggle="dropdown"><i class="fi-globe me-2"></i>Eng</button> -->
           <!-- <div class="dropdown-menu dropdown-menu-dark w-100"><a class="dropdown-item" href="#">Deutsch</a><a class="dropdown-item" href="#">Français</a><a class="dropdown-item" href="#">Español</a></div> -->
         </div>
         <!-- <div class="dropdown">
@@ -57,18 +57,18 @@
         <p class="fs-sm text-light opacity-70">Don’t miss any relevant offers!</p>
         <form class="form-group form-group-light w-100">
           <div class="input-group input-group-sm"><span class="input-group-text"> <i class="fi-mail"></i></span>
-            <input class="form-control" type="text" placeholder="Your email">
+            <input class="form-control" type="text" placeholder="Your email" id="youremail">
           </div>
-          <button class="btn btn-danger btn-icon btn-sm" type="button"><i class="fi-send"></i></button>
+          <button class="btn btn-danger btn-icon btn-sm" type="button" id="send_email"><i class="fi-send"></i></button>
         </form>
       </div>
       <div class="col-lg-2 col-md-3 col-sm-6 offset-xl-1 mb-2 mb-sm-4">
-        <h3 class="fs-base text-light">Products &amp; </h3>
+        <h3 class="fs-base text-light">Products </h3>
         <ul class="list-unstyled fs-sm">
-          <li><a class="nav-link-light" href="vechiles#TWO_WHEELERS">Two Wheelers</a></li>
-          <li><a class="nav-link-light" href="vechiles#THREE_WHEELERS">Three Wheelers</a></li>
-          <li><a class="nav-link-light" href="vechiles#FOUR_WHEELERS">Four Wheelers</a></li>
-          <li><a class="nav-link-light" href="">OBM</a></li>
+          <li><a class="nav-link-light" href="vechicles#TWO_WHEELERS">Two Wheelers</a></li>
+          <li><a class="nav-link-light" href="vechicles#THREE_WHEELERS">Three Wheelers</a></li>
+          <li><a class="nav-link-light" href="vechicles#FOUR_WHEELERS">Four Wheelers</a></li>
+          <li><a class="nav-link-light" href="vechicles#TWO_WHEELERS">OBM</a></li>
 
 
         </ul>
@@ -78,18 +78,78 @@
         <ul class="list-unstyled fs-sm">
           <li><a class="nav-link-light" href="about-us">About Us</a></li>
           <li><a class="nav-link-light" href="#signin-modal" data-bs-toggle="modal">Contact us</a></li>
-          <li><a class="nav-link-light" href="#">Newsletter</a></li>
+          <li><a class="nav-link-light" href="newsletter">Newsletter</a></li>
         </ul>
       </div>
       
-      <div class="col-xl-2 col-lg-3 col-sm-6 col-md-3 mb-2 mb-sm-4"><a class="d-flex align-items-center text-decoration-none mb-2" href="tel:4065550120"><i class="fi-device-mobile text-danger me-2"></i><span class="text-light">0903 386 4676</span></a><a class="d-flex align-items-center text-decoration-none mb-2" href="mailto:example@email.com"><i class="fi-mail me-2 text-danger"></i><span class="text-light">contact@boulos.ng</span></a>
+      <div class="col-xl-2 col-lg-3 col-sm-6 col-md-3 mb-2 mb-sm-4"><a class="d-flex align-items-center text-decoration-none mb-2" href="tel:09033864676"><i class="fi-device-mobile text-danger me-2"></i><span class="text-light">0903 386 4676</span></a><a class="d-flex align-items-center text-decoration-none mb-2" href="mailto:contact@boulos.ng"><i class="fi-mail me-2 text-danger"></i><span class="text-light">contact@boulos.ng</span></a>
 
-        <div class="d-flex flex-wrap pt-4"><a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2 me-2" href="#"><i class="fi-facebook"></i></a><a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2 me-2" href="#"><i class="fi-twitter"></i></a><a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2 me-2" href="#"><i class="fi-telegram"></i></a><a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2" href="#"><i class="fi-messenger"></i></a></div>
+        <div class="d-flex flex-wrap pt-4"><a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2 me-2" id="facebook"><i class="fi-facebook"></i></a><a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2 me-2" id="twitter"><i class="fi-twitter"></i></a><a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2 me-2" id="instagram"><i class="fi-instagram"></i></a><a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2" id="linkedin"><i class="fi-linkedin"></i></a></div>
       </div>
     </div>
   </div>
   <div class="container d-lg-flex align-items-center justify-content-between fs-sm pb-3">
-    <div class="d-flex flex-wrap justify-content-center order-lg-2 mb-3"><a class="nav-link nav-link-light fw-normal" href="#">Privacy policy</a></div>
-    <!-- <p class="text-center text-lg-start order-lg-1 mb-lg-0"><span class="text-light opacity-50">&copy; All rights reserved. Made by </span><a class="nav-link-light fw-bold" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></p> -->
+    <!-- <div class="d-flex flex-wrap justify-content-center order-lg-2 mb-3"><a class="nav-link nav-link-light fw-normal" href="#">Privacy policy</a></div> -->
+    <p class="text-center text-lg-start order-lg-1 mb-lg-0"><span class="text-light opacity-50">&copy; All rights reserved. Powered By </span><a class="nav-link-light fw-bold" href="" target="_blank" rel="noopener">Boulos IT Department</a></p>
   </div>
+  <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+
+      $("#facebook").on('click',function(){
+          window.open('https://www.facebook.com/BoulosEnterprisesLimited');
+      })
+
+      $("#instagram").on('click',function(){
+          window.open('https://www.instagram.com/boulosenterpriseslimited');
+      })
+
+      $("#twitter").on('click',function(){
+          window.open('https://twitter.com/boulos_ent_ltd');
+      })
+      $("#linkedin").on('click',function(){
+          window.open('https://www.linkedin.com/company/boulos-enterprises-ltd');
+      })
+
+     
+      $("#send_email").on('click',function(){
+          if(document.getElementById('youremail').value !=""){
+
+            $.ajax({
+            
+            url:'api/subcribe.php',
+            method:'post',
+            data:{email:document.getElementById('youremail').value},
+            success:function(data){
+              if(JSON.parse(data).status){
+                  Swal.fire(
+                    'Gratitude For Subscribing to Our Newsletter!',
+                    JSON.parse(data).message,
+                    'success'
+                )
+                document.getElementById('youremail').value=""
+              }
+              else{
+                Swal.fire(
+                    'oops!',
+                    JSON.parse(data).message,
+                    'error'
+                )
+              }
+             
+             },
+            error:function(err){
+
+            }
+          })
+
+          }
+      })
+
+    })
+  </script>
+
+
 </footer>

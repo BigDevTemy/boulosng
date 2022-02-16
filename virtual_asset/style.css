@@ -1,3 +1,10 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap'); */
+*{
+    padding:0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
 .imageDiv{
    
     display: flex;
@@ -21,14 +28,25 @@ body{
 .imageOpen{
     position: absolute;
     cursor: pointer;
+    left: 56%;
+    top:45%;
+    
 
 }
 .openDiv{
     position: absolute;
+    z-index: 0.1;
     width: 100%;
+    height: 100%;
+    display: flex;
     justify-content: center;
-    align-self: center;
-    background-color: #000;
+    top:50px;
+    bottom:1%;
+    left:10%;
+    background-color:red
+    
+    
+    
 
 }
 .nativemodal{
@@ -36,6 +54,10 @@ body{
     z-index: 2;
     width: 100%;
     height: 100vh;
+    background-color: rgb(0, 0, 0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 }
 .divInterior{
@@ -64,12 +86,14 @@ body{
 }
 .modalImage{
     width: 60%;
+    border-radius: 15px;
     transition:transform 2s;
     
 }
-/* .mainCar{
-    transition:transform 2s;
-} */
+ /* .mainCar{
+    
+}  */
+
 
 .header{
     width:100%;
@@ -146,14 +170,28 @@ body{
     display: flex;
     position:relative;
     align-items: center;
+    justify-content: space-between;
+    background: url('./images/showroom.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    height:100%;
+
+    
+}
+
+.bannerCSS{
+    display: flex;
+    position:relative;
+    align-items: center;
     justify-content: space-around;
-    background: url('./images/showroom.jpg');
+    background: url('./images/banner.JPG');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
     
-
 }
 .title{
     background-color: #000;
@@ -164,4 +202,126 @@ body{
     display: flex;
     justify-content: space-around;
 }
+
+.navSidebar{
+    font-family: Arial;
+    font-size: 18px;
+    width:300px;
+    height: 100vh;
+    background-color:rgb(0,0,0,0.5) ;
+    top:0px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    
+  
+}
+.navSidebarTitle{
+    font-family: Arial;
+    font-size: 18px;
+    width:100%;
+    height: 30px;
+    text-align: left;
+    color:#fff;  
+    margin-bottom: 20px;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+.line{
+    width: 50px;
+    font-weight: 400px;
+    color: #fff;
+}
+.sideleft{
+    margin-top: 350px;
+    cursor: pointer;
+}
+.sideright{
+    margin-top: 350px;
+    padding-right: 50px;
+    cursor: pointer;
+/* }
+.productClass{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    padding:20px;
+    color:#fff;
+    cursor: pointer;
+    text-align: left; 
+    margin: 10px;
+   
+}
+
+
+.productsDiv{
+    /* display: flex;
+    flex-direction: column; */
+    width: 100%;
+    text-align: left;
+    overflow-y: scroll;
+    
+}
+.productsDiv > div{
+    /* width: 100%;
+    margin: 10px;
+    padding:10px;
+    flex:1 1 100%;
+    background-color: seagreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; */
+    padding:15px;
+    color:#fff;
+    cursor: pointer;
+}
+.productsDiv > ul{
+    /* width: 100%;
+    margin: 10px;
+    padding:10px;
+    flex:1 1 100%;
+    background-color: seagreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; */
+    padding:15px;
+    color:#fff;
+    cursor: pointer;
+}
+
+.productsDiv > div:hover{
+    color: #cecece !important;
+    background: rgba(0, 0, 0, 0.678);
+    opacity: 0.75;
+    width: 100%;
+}
+.productsDiv > ul:hover{
+    color: #cecece !important;
+    background: rgba(0, 0, 0, 0.678);
+    opacity: 0.75;
+    width: 100%;
+} */
+
+.active{
+    color:#0d3050 !important ;
+    font-weight: 600;
+    background-color: rgba(255, 235, 205, 0.678);
+    opacity: 0.75;
+}
+.myClass{
+    display: flex;
+    
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 20%;
+}
+
+.dashboard{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 5000;
+}
+
 

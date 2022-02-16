@@ -13,7 +13,7 @@ window.onpopstate = e => loadComponent(document.location.href)
 	}
     else{
         var getnewHash = location.hash.replace("#","");
-        console.log('I got here')
+        
         if(getnewHash.includes('/')){
             var x =  getnewHash.split('/');
             var count = getnewHash.split('/').length -1
@@ -23,15 +23,18 @@ window.onpopstate = e => loadComponent(document.location.href)
 
         }
         else{
+
             document.getElementById('single').innerHTML="";
+            document.getElementById('main').innerHTML="";
             $("#mybody").show();
-            
             $("nav").show();
             var category = getnewHash.replace("_"," ");
-             document.querySelector('.category').innerHTML=category
-             document.querySelector('.breadcrumber').innerHTML=category
              assignActiveClass(category);
              grabData(category)
+             document.querySelector('.category').innerHTML=category
+             document.querySelector('.breadcrumber').innerHTML=category
+             
+             
              
              
         }
@@ -49,7 +52,7 @@ function assignActiveClass(text){
     var x = document.querySelectorAll('.card-nav-link');
     
     for(var i=0;i<x.length;i++){
-        console.log(x[i].textContent)
+       
         if(x[i].classList.contains('active')){
             x[i].classList.remove('active')
             

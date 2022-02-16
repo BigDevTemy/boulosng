@@ -42,7 +42,7 @@
                                
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Provide the Vechile Name" style="color:#000;border:1px solid #000" id="vechicle_name" />
+                                <input type="text" class="form-control" placeholder="Provide the Vechicle Name" style="color:#000;border:1px solid #000" id="vechicle_name" />
                             </div> 
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Product Overview</label>
@@ -53,8 +53,14 @@
                                 <textarea class="form-control" style="color:#000;border:1px solid #000;border-radius:10px" id="specification" rows="3"></textarea>
                             </div>
                             <div>
-                                <input type="file" class="form-control" style="color:#000"  accept="image/png, image/gif, image/jpeg" id="image" name="image" value="Select Image" />
+                               <label for="exampleFormControlTextarea1">Image Thumbnail</label>
+                                <input type="file" class="form-control" style="color:#000"  accept="image/png, image/gif, image/jpeg" id="image_thumbnail" name="image_thumbnail" value="Select Image" />
                             </div> 
+                            
+                            <div>
+                                <label for="exampleFormControlTextarea1">Image Banner</label>
+                                <input type="file" class="form-control" style="color:#000"  accept="image/png, image/gif, image/jpeg" id="image_banner" name="image_banner" value="Select Image" />
+                            </div>
 
                             <div class="form-group mt-4">
                                 <input type="button" class="form-control" style="background:#25486b" value="Add Vechicle"  id="add" />
@@ -139,7 +145,7 @@ $(document).ready(function() {
       var specification = $("#specification").val()
 
       
-    if(category!="" && subcategory!="" && vechicle!="" && document.getElementById("image").files.length > 0){
+    if(category!="" && subcategory!="" && vechicle!="" && document.getElementById("image_thumbnail").files.length > 0 && document.getElementById("image_banner").files.length > 0){
         
         var trimmed ="";
         $('#specification').val(function(i,v){
@@ -152,7 +158,8 @@ $(document).ready(function() {
         formdata.append('vechicle',vechicle)
         formdata.append('overview',overview)
         formdata.append('specification',trimmed)
-        formdata.append('image',$('input[type=file]')[0].files[0])
+        formdata.append('image_thumbnail',$('#image_thumbnail')[0].files[0])
+        formdata.append('image_banner',$('#image_banner')[0].files[0])
         
         $.ajax({
                     url:'api/uploadVechicle.php',
@@ -168,7 +175,8 @@ $(document).ready(function() {
                             document.getElementById('category').value="";
                             document.getElementById('subcategory').value="";
                             document.getElementById('vechicle_name').value="";
-                            document.getElementById('image').value="";
+                            document.getElementById('image_banner').value="";
+                            document.getElementById('image_thumbnail').value="";
                             $("#overview").val("")
                             $("#specification").val("")
                         }

@@ -12,9 +12,9 @@
 <body>
     <div style="width:100%;text-align:center;background:#f8f9fe">
         <div class="header"></div>
-        <div class="title"><h2>Virtual Showroom</h2></div>
+        <div class="title"><h2>Virtual Showrooms</h2></div>
         <div id="displayInner"></div>
-        <div id="main" style="width:100%;position:relative;margin-top:50px"> 
+        <div id="main" style="width:100%;position:relative;margin-top:0px;"> 
            
         </div>
         
@@ -23,6 +23,6 @@
 </body>
 
 <script type="text/javascript">
-    loadImage();
+    
 </script>
 </html>

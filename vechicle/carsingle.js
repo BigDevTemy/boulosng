@@ -58,14 +58,7 @@ function filterData(x){
                             
                         </div>
                         </div>
-                        <ul class="tns-thumbnails" id="thumbnails">
-                        <li class="tns-thumbnail"><img src="./admin/api/${d[3]}" alt="Thumbnail"></li>
-                        <li class="tns-thumbnail"><img src="./admin/api/${d[3]}" alt="Thumbnail"></li>
-                        <li class="tns-thumbnail"><img src="./admin/api/${d[3]}" alt="Thumbnail"></li>
-                        <li class="tns-thumbnail"><img src="./admin/api/${d[3]}" alt="Thumbnail"></li>
-                       
                         
-                        </ul>
                         <!-- Specs-->
                         <div class="py-3 mb-3">
                         <h2 class="h4 text-light mb-4">Specifications</h2>
@@ -110,17 +103,17 @@ function filterData(x){
                         <div class="card card-light card-body mb-4">
                             <div class="text-light mb-2">${sub_category_name}</div><a class="d-flex align-items-center text-decoration-none mb-3">
                             <div class="ps-2">
-                                <h5 class="text-light mb-0">${d[2]}</h5><span class="star-rating"><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i></span><span class="fs-sm text-light opacity-70 align-middle ms-1">(5 reviews)</span>
+                                <h5 class="text-light mb-0">${d[2]}</h5>
                             </div></a>
                             <div class="pt-4 mt-2">
-                            <button class="btn btn-outline-light btn-lg px-4 mb-3" type="button" style="background:#f23c49"><i class="fi-phone me-2"></i>09033864676</button><br><a class="btn btn-primary btn-lg" style="background:#f23c49" href="#send-mail" data-bs-toggle="collapse"><i class="fi-chat-left me-2"></i>Send message</a>
+                            <a target ="_blank" href="https://wa.me/2349033864676"><button class="btn btn-outline-light btn-lg px-4 mb-3" type="button" style="background:#25D366"><i class="fi-whatsapp me-2"></i>09033864676</button></a><br><a class="btn btn-primary btn-lg" style="background:#f23c49" href="#send-mail" data-bs-toggle="collapse"><i class="fi-chat-left me-2"></i>Send message</a>
                             <div class="collapse" id="send-mail" >
                                 <form class="needs-validation pt-2" novalidate>
                                 <div class="mb-3">
-                                    <textarea class="form-control form-control-light" rows="5" placeholder="Write your message" required></textarea>
+                                    <textarea class="form-control form-control-light" rows="5" id="customer_message" placeholder="Write your message" required></textarea>
                                     <div class="invalid-feedback">Please enter you message.</div>
                                 </div>
-                                <button class="btn btn-outline-primary" type="submit">Submit</button>
+                                <button class="btn btn-outline-primary" type="submit" onclick="return send_message();">Submit</button>
                                 </form>
                             </div>
                             </div>
@@ -129,9 +122,9 @@ function filterData(x){
                             <h5 class="text-light">Kindly Drop your Email for prompt notification on our newly arrived products:</h5>
                             <form class="form-group form-group-light mb-3">
                             <div class="input-group"><span class="input-group-text"> <i class="fi-mail"></i></span>
-                                <input class="form-control" type="email" placeholder="Your email" required>
+                                <input class="form-control" type="email" id="your_email" placeholder="Your email" required>
                             </div>
-                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                            <button class="btn btn-primary" type="submit" id="send_email" onclick="return subscribe();">Subscribe</button>
                             </form>
                             
                         </div>
@@ -161,7 +154,7 @@ function filterData(x){
                 JSON.parse(data).related.forEach((d)=>{
                     datarelated += `
                                         <div class="card" style="width: 23rem;margin:10px">
-                                            <img class="card-img-top" src="./admin/api/${d.image_url}" style="width:300px;height:250px;" alt="Card image cap">
+                                            <img class="card-img-top" src="./admin/api/${d.image_url}" style="" alt="Card image cap">
                                             <div class="card-body">
                                                 <h5 class="card-title">${d.vechicle_name}</h5>
                                                 <p class="card-text">${sub_category_name}</p>
@@ -175,6 +168,11 @@ function filterData(x){
                 
                 $(content).find('#myrelated').append(datarelated);
                 $(content).find('#spec').append(datasett);
+                window && window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                  });
                 
                 // $(content).find('#spec').append(`
                 // <li class="mb-2"><strong>Manufacturing Year:</strong><span class="opacity-70 ms-1">2018</span></li>
@@ -196,8 +194,63 @@ function filterData(x){
             console.log(err)
         }
     })
+
+    // $("#whatsapp").on('click',function(){
+    //     window.open('https://wa.me/2349033864676')
+    // })
+
+    // $("#whatsapp").click(function(){
+    //     a
+    // })
     
-    
+}
+
+
+
+function subscribe(){
+    if(document.getElementById('your_email').value !=""){
+        $.ajax({
+            
+            url:'./api/subcribe.php',
+            method:'post',
+            data:{email:document.getElementById('your_email').value},
+            success:function(data){
+                console.log(data)
+              if(JSON.parse(data).status){
+                  Swal.fire(
+                    'Gratitude For Subscribing to Our Newsletter!',
+                    JSON.parse(data).message,
+                    'success'
+                )
+                document.getElementById('youremail').value=""
+              }
+              else{
+                Swal.fire(
+                    'oops!',
+                    JSON.parse(data).message,
+                    'error'
+                )
+              }
+             
+             },
+            error:function(err){
+                console.log(err)
+
+            }
+          })
+    }
+}
+
+function send_message(){
+    if(document.getElementById('customer_message').value){
+        
+        Swal.fire(
+            'Gratitude!',
+            'Our Support Team will be in touch soon',
+            'success'
+            ) 
+
+    }
 }
 
 

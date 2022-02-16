@@ -12,12 +12,12 @@
                       <div class="col-md-6 px-4 pt-2 pb-4 px-sm-5 pb-sm-5 pt-md-5">
                           <div class="mb-4">
                               <label class="form-label text-light mb-2" for="signin-email">Name</label>
-                              <input class="form-control form-control-light" type="text" name="client_name" id="" placeholder="Enter your Full name" required>
+                              <input class="form-control form-control-light" type="text" name="client_name" id="fullname" placeholder="Enter your Full name" required>
                           </div>
                           <form class="needs-validation" novalidate>
                               <div class="mb-4">
                                   <label class="form-label text-light mb-2" for="signin-email">Email address</label>
-                                  <input class="form-control form-control-light" type="email" id="signin-email" placeholder="Enter your email" required>
+                                  <input class="form-control form-control-light" type="email" id="email" placeholder="Enter your email" required>
                               </div>
                               <div class="mb-4">
                                   <div class="d-flex align-items-center justify-content-between mb-2">
@@ -25,10 +25,10 @@
                                   </div>
                                   <div class="mb-4">
 
-                                      <textarea class="form-control form-control-light" type="text" name="client_name" id="" placeholder="Enter your Message here" required></textarea>
+                                      <textarea class="form-control form-control-light" type="text" name="message" id="" placeholder="Enter your Message here" required></textarea>
                                   </div>
                               </div>
-                              <button class="btn btn-danger btn-lg w-100" type="submit">Submit </button>
+                              <button class="btn btn-danger btn-lg w-100" type="submit" id="add">Submit </button>
                           </form>
                       </div>
                   </div>
@@ -96,3 +96,59 @@
          <button type="button"><i class="fi-chevron-right"></i></button>
      </div>
      <!-- </section> -->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+      <script type="text/javascript">
+            $(document).ready(function(){
+
+
+                $("#add").on('click',function(e){
+                    var fullname = document.getElementById('fullname').value;
+                    var email = document.getElementById('email').value;
+                    var message = $("#message").val();
+                    e.preventDefault();
+
+                if(fullname!="" && email!="" && message!=""){
+                    $.ajax({
+                        url:'api/contact_us',
+                        method:'post',
+                        data:{
+                            fullname:fullname,email:email,message:message
+                        },
+                        beforeSend:function(){
+                                document.getElementById('response').innerHTML ="<span style='font-size:14px;color:#fff;padding:40px'>Please Wait</span>"
+                        },
+                        success:function(data){
+                            
+                            if(JSON.parse(data).status){
+                                Swal.fire(
+                                    'Gratitude!',
+                                    JSON.parse(data).data,
+                                    'success'
+                                    )
+                                    document.getElementById('response').innerHTML=""
+                                    document.getElementById('fullname').value=""
+                                     document.getElementById('email').value=""
+                                    $("#message").val("");
+                            }
+                            else{
+                                Swal.fire(
+                                    'Opps!',
+                                    JSON.parse(data).data,
+                                    'error'
+                                    )
+
+                                    document.getElementById('response').innerHTML=""
+                            }
+                        },
+                        error:function(error){
+                            console.log(error)
+                        }
+
+                    })
+                }
+                })
+               
+            })
+            
+        </script>

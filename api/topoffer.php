@@ -14,7 +14,7 @@ if(mysqli_num_rows($res)> 0){
     }
 
     for($v=0;$v<3;$v++){
-        $queryz =  "SELECT * FROM vechicle LEFT JOIN `vechile_subcategory` ON `vechicle`.`sub_category_id` = `vechile_subcategory`.`id` LEFT JOIN `vechicle_category` ON `vechile_subcategory`.`category_id` = `vechicle_category`.`id` WHERE `vechicle`.`id` = '".$rand_array[$v]."' ";
+        $queryz =  "SELECT * FROM vechicle LEFT JOIN `vechile_subcategory` ON `vechicle`.`sub_category_id` = `vechile_subcategory`.`id` LEFT JOIN `vechicle_category` ON `vechile_subcategory`.`category_id` = `vechicle_category`.`id` WHERE `vechicle`.`id` = '".$rand_array[$v]."' AND `vechicle`.`status`='active' ";
         // $query = "SELECT * FROM vechicle WHERE id='".$rand_array[$v]."'";
         $res = mysqli_query($con,$queryz) or die(mysqli_error());
         if(mysqli_num_rows($res) > 0){

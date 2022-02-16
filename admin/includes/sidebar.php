@@ -18,7 +18,12 @@
                     <p>Dashboard</p>
                 </a>
             </li>
-           
+            <li class="active">
+                <a href="create_newsletter.php">
+                    <i class="tim-icons icon-chart-pie-36"></i>
+                    <p>Add NewsLetter</p>
+                </a>
+            </li>
             <li>
                 <a data-toggle="collapse" href="#componentsExamples">
                     <i class="tim-icons icon-molecule-40"></i>
@@ -116,6 +121,7 @@
                                    
                                 </ul>
                             </div>
+                            
                         </li>
 
                         

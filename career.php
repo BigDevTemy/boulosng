@@ -90,10 +90,10 @@
                                     </select>
                                 </div> -->
                                 <div class="formgroup mb-3">
-                                    <input type="text" class="form-control" placeholder="Firstname">
+                                    <input type="text" class="form-control" placeholder="Firstname" id="fname" required>
                                 </div>
                                 <div class="formgroup mb-3">
-                                    <input type="text" class="form-control" placeholder="Lastname">
+                                    <input type="text" class="form-control" placeholder="Lastname" id="lname" required>
                                 </div>
                                 <!-- <div class="formgroup mb-3">
                                     <select name="" id="" class="form-select form-control">
@@ -103,21 +103,22 @@
                                     </select>
                                 </div> -->
                                 <div class="formgroup mb-3">
-                                    <input type="text" class="form-control" placeholder="Phonenumber">
+                                    <input type="text" class="form-control" placeholder="Phonenumber" id="phonenumber" required>
                                 </div>
                                 <div class="formgroup mb-3">
-                                    <input type="text" class="form-control" placeholder="City">
+                                    <input type="text" class="form-control" placeholder="City" id="city" required>
                                 </div>
                                 <div class="formgroup mb-3">
-                                    <input type="email" class="form-control" placeholder="Email">
+                                    <input type="email" class="form-control" placeholder="Email" id="email" required>
                                 </div>
                                 <div class="formgroup mb-3">
                                     <label for="">Upload Your CV</label>
-                                    <input type="file" class="form-control" title="Upload Your CV">
+                                    <input type="file" id="fileUpload" name="fileUpload" accept="application/pdf" class="form-control" title="Upload Your CV">
                                 </div>
                                 <div class="formgroup mb-3">
-                                    <input type="button" class="btn btn-danger" value="Submit">
+                                    <input type="submit" class="btn btn-danger" value="Submit" id="submitCV">
                                 </div>
+                                <div id="response"></div>
                             </form>
                         </div>
                     </div>
@@ -151,6 +152,8 @@
 
     <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon fi-chevron-up"> </i></a>
     <!-- Vendor scrits: js libraries and plugins-->
+    <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/simplebar/dist/simplebar.min.js"></script>
     <script src="vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
@@ -164,5 +167,76 @@
 
     <?php include_once "includes/reactcdn.php"; ?>
 </body>
+<script type="text/javascript">
+$(document).ready(function(){
 
+
+
+    $("#submitCV").on('click',function(e){
+        e.preventDefault();
+
+        
+        var fname = document.getElementById('fname').value
+        var lname = document.getElementById('lname').value
+        var phonenumber = document.getElementById('phonenumber').value
+        var email = document.getElementById('email').value
+        var city = document.getElementById('city').value
+
+        if(document.getElementById("fileUpload").files.length > 0){
+            var formdata = new FormData();
+            formdata.append('fname',fname)
+            formdata.append('lname',lname)
+            formdata.append('phonenumber',phonenumber)
+            formdata.append('email',email)
+            formdata.append('city',city)
+            formdata.append('fileUpload',$('input[type=file]')[0].files[0])
+
+            $.ajax({
+                        url:'api/uploadCV.php',
+                        method:'post',
+                        data:  formdata,
+                        contentType: false,
+                                cache: false,
+                        processData:false,
+                        beforeSend:function(){
+                            document.getElementById('response').innerHTML ='<h4 style="color:#fff">Please Wait</h4>'
+                        },
+
+                        success:function(data){
+                            if(JSON.parse(data).status){
+                                Swal.fire(
+                                    'Great Move!',
+                                    JSON.parse(data).message,
+                                    'success'
+                                    )
+                                document.getElementById('response').innerHTML = 
+                                document.getElementById('fname').value="";
+                                document.getElementById('lname').value="";
+                                document.getElementById('phonenumber').value="";
+                                document.getElementById('fileUpload').value="";
+                                document.getElementById('city').value="";
+                                document.getElementById('email').value="";
+                                
+                            }
+                            else{
+                                Swal.fire(
+                                    'OOps!',
+                                    JSON.parse(data).message,
+                                    'error'
+                                    )
+                                document.getElementById('response').innerHTML = JSON.parse(data).message
+                            }
+                        },
+                        error:function(err){
+                            console.log(err)
+                        }
+                    })
+
+        }
+    })
+
+
+
+})
+</script>
 </html>

@@ -52,13 +52,16 @@
               <!--<img class="rounded-circle" src="img/avatars/01.jpg" width="48" alt="Robert Fox"> -->
               <div class="pt-md-2 pt-lg-0 ps-3 ps-md-0 ps-lg-3">
                 <h2 class="fs-lg text-light mb-0">BOULOS NG</h2>
-                <address>Boulos Enterprise Limited</address>
+                <address>Boulos Enterprises Limited</address>
 
               </div>
             </div><a class="btn btn-outline-light d-block d-md-none w-100 mb-3" href="#account-nav" data-bs-toggle="collapse"><i class="fi-align-justify me-2"></i>Menu</a>
             <div class="collapse d-md-block mt-3" id="account-nav">
-              <div class="card-nav linkCover"><a class="card-nav-link" href="#TWO_WHEELERS"><i class="fi-car me-2"></i>TWO WHEELERS</a><a class="card-nav-link" href="#THREE_WHEELERS"><i class="fi-car me-2"></i>THREE WHEELERS</a><a class="card-nav-link" href="#FOUR_WHEELERS"><i class="fi-car me-2"></i>FOUR WHEELERS</a>
-                <a class="card-nav-link" href=""><i class="fi-car me-2"></i>OBM</a>
+              <div class="card-nav linkCover">
+                  <a class="card-nav-link" id="TWO_WHEELERS" style="cursor:pointer"><i class="fi-car me-2"></i>TWO WHEELERS</a>
+                  <a class="card-nav-link" id="THREE_WHEELERS" style="cursor:pointer" ><i class="fi-car me-2"></i>THREE WHEELERS</a>
+                  <a class="card-nav-link" id="FOUR_WHEELERS" style="cursor:pointer" ><i class="fi-car me-2"></i>FOUR WHEELERS</a>
+                  <a class="card-nav-link" href="#OBM" style="cursor:pointer" ><i class="fi-car me-2"></i>OBM</a>
               </div>
             </div>
           </div>
@@ -112,16 +115,33 @@
   <!-- Main theme script-->
   <script src="js/theme.min.js"></script>
   <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script type="text/javascript" src="vechicle/carsingle.js"></script>
   <script type="text/javascript" src="vechicle/main.js"></script>
   <script type="text/javascript" src="vechicle/index.js"></script>
  
   <script type="text/javascript">
+    
     $(document).ready(function() {
-      loadComponent(document.location.href)
-        function check(){
-          alert('I am Here')
-        }
+        window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                  });
+        // loadComponent(document.location.href)
+        $("#TWO_WHEELERS").on('click',function(){
+          window.history.replaceState("", document.title, window.location.href.replace(location.hash, "") + '#TWO_WHEELERS');
+            
+        })
+        $("#THREE_WHEELERS").on('click',function(){
+          window.history.replaceState("", document.title, window.location.href.replace(location.hash, "") + '#THREE_WHEELERS');
+        })
+        $("#FOUR_WHEELERS").on('click',function(){
+          window.history.replaceState("", document.title, window.location.href.replace(location.hash, "") + '#FOUR_WHEELERS');
+        })
+        $("#OBM").on('click',function(){
+          window.history.replaceState("", document.title, window.location.href.replace(location.hash, "") + '#OBM');
+        })
     })
   </script>
 </body>

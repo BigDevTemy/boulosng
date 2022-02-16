@@ -9,7 +9,7 @@
          </div>
      </div>
      <div class="tns-carousel-wrapper tns-controls-outside-xxl tns-nav-outside tns-carousel-light">
-         <div id="latest-offer" style="display:flex;flex-direction:row;justify-content:space-between">
+         <div id="latest-offer" style="display:flex;flex-direction:row;justify-content:space-around;">
              
              
              
@@ -20,7 +20,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         var dataset="";
-        
+        var getCurrentUrl = document.location.href;
         $.ajax({
             
             url:'api/topoffer.php',
@@ -29,21 +29,21 @@
                 JSON.parse(data).data.forEach((d)=>{
                     dataset += `
                         <div>
-                            <div class="card card-light card-hover h-100" style="border:1px solid #d5d5d5;padding:10px">
-                                <div class="card-img-top card-img-hover"><a class="img-overlay" href=""></a>
-                                    
-                                    <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                                        
-                                    </div><img src="./admin/api/${d.image_url}" alt="Image" style="height:250px">
+                            <div class="card card-light card-hover h-100" style="border:1px solid #d5d5d5;padding:10px;flex-grow:1">
+                                <div class="card-img-top card-img-hover">
+                                <a href="${getCurrentUrl}vechicles#${d.category.replace(/ /g, '_')}/${d.sub_category_name.replace(/ /g, '+')}/${d.vechicle_name.replace(/ /g, '+')}">
+                                   <img src="./admin/api/${d.image_url}" alt="Image" >
+                                </a>
+
                                 </div>
                                 <div class="card-body">
                                     <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm me-3" style="color:#0d3050;font-weight:bold">${d.vechicle_name}</span>
                                         <div class="form-check " style="color:#0d3050">
                                             <!-- <input class="form-check-input" type="checkbox" id="compare4"> -->
-                                            <label class="form-check-label fs-sm" for="compare4"><a href="vechicles#${d.category.replace(/ /g, '_')}" class="text-danger">View More</a></label>
+                                           
                                         </div>
                                     </div>
-                                    <h3 class="h6 mb-1"><a class="nav-link-light text-danger" href="#">${d.vechicle_name}</a></h3>
+                                    <h3 class="h6 mb-1"><a class="nav-link-light text-danger" href="${getCurrentUrl}vechicles#${d.category.replace(/ /g, '_')}/${d.sub_category_name.replace(/ /g, '+')}/${d.vechicle_name.replace(/ /g, '+')}">${d.vechicle_name}</a></h3>
 
                                     <div class="fs-sm  opacity-70" style="color:#0d3050"><i class="fi-map-pin me-1" style="color:#ff0000"></i>Boulos,Nigeria</div>
                                 </div>

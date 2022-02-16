@@ -1,9 +1,9 @@
 <?php
 
 $host = "localhost";
-$user = "root";
-$password = "BiL@18";
-$db_name = "boulos_website";
+$user = "webdev";
+$password = 'kI6b$J9,BZw1';
+$db_name = "grouphf4_boulos_website";
 
 $con = mysqli_connect($host, $user, $password, $db_name);
 

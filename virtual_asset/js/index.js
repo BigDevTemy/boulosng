@@ -1,327 +1,69 @@
-document.querySelector('.productsDiv').addEventListener('click',function(e){
-    // console.log(e.target.classList)
-    // console.log(e.target.textContent);
-    // e.target.classList.add('active');
-    // console.log(e.target.classList)
-    var i = document.querySelector('.productsDiv');
+
+function loadImage(bikename){
+
    
-    for(var x=0; x<i.children.length;x++){
-        
-        if(i.children[x].classList.contains('active')){
-            i.children[x].classList.remove('active');
-        }
-        e.target.classList.add('active');
+     
+    if(document.getElementById('main').children.length > 0){
+        document.getElementById('main').innerHTML = " "
+        document.getElementById('sideLeft').innerHTML = " "
+        document.getElementById('sideRight').innerHTML = " "
     }
-
-    loadImage(e.target.textContent);
     
-})
-
-
-
-
-
-function loadImage(){
-    const cover = document.createElement("div");
-    cover.setAttribute('class','cover')
-    const start = document.createElement("div");
-    const end = document.createElement("div");
-   
-
-    const node = document.createTextNode("Click Here to Start.");
-    const nodeII = document.createTextNode("Reverse Trend.");
-    start.appendChild(node);
-    end.appendChild(nodeII);
-    cover.appendChild(start)
-    cover.appendChild(end)
-
+    
     const maincar = document.createElement('img');
-    const manageDiv = document.createElement('div');
-    
+    const sideLeft = document.createElement('img');
+    const sideRight = document.createElement('img');
 
-    manageDiv.setAttribute('class','manageDiv')
-    maincar.src="./virtual_asset/images/haojueblue/front_view.png"
-    maincar.setAttribute('class','mainCar')
+
+    maincar.src=`./virtual_asset/images/${bikename}/front_view.png`
+    sideLeft.src=`./virtual_asset/images/restore.png`
+    sideRight.src=`./virtual_asset/images/white_arrow.png`
+
+    maincar.setAttribute('class','mainCar');
+
+    sideLeft.setAttribute('class','blink-image front_left');
    
-    const side_left = document.createElement('img');
-    side_left.src="./virtual_asset/images/restore.png"
-    side_left.setAttribute('class','blink-image front_left sideleft')
     
+    sideRight.setAttribute('class','blink-image front_right');
+  
+   
+    const main = document.getElementById("main");
+    const left_element = document.getElementById("sideLeft");
+    const right_element = document.getElementById("sideRight");
 
-    const side_right = document.createElement('img');
-    side_right.src="./virtual_asset/images/white_arrow.png"
-    side_right.setAttribute('class','blink-image front_right sideright')
-    const element = document.getElementById("main");
+    main.appendChild(maincar);
+    left_element.appendChild(sideLeft);
+    right_element.appendChild(sideRight)
     
-
-    // element.appendChild(nav)
-    element.appendChild(side_left)
-    element.appendChild(maincar);
-    element.appendChild(side_right);
-
-    trackClick(element);
-
+    console.log(document.getElementById('element'))
+    // trackClick(bikename);
+    removeIcon(element)
+    
 }
 
-function trackClick(element){
-   
-    element.addEventListener('click',function(e){
-        // console.log(e.target.classList)
-        var getotherarrows = document.querySelectorAll('.blink-image');
-        const getImage = document.querySelector('.mainCar')
-        for(var i=0;i<getotherarrows.length;i++){
-            if(getotherarrows[i].classList.contains('front_left') && e.target.classList.contains('front_right')){
+
+function openDoorIcon(element,bikename){
+                var div = document.createElement('div');
                 
-                getImage.src="./virtual_asset/images/haojueblue/left_front_3qt.png";
-                // getImage.style.marginTop = "250px"
-                // getImage.style.marginLeft = "50px"
-                getotherarrows[i].classList.remove('front_left');
-                e.target.classList.remove('front_right');
-    
-                getotherarrows[i].classList.add('front_view');
-                e.target.classList.add('left_side_view');
-                console.log('Target', e.target.classList)
-                console.log('Non-Target',getotherarrows[i].classList)
-  
-            }
-            //Reverse_above
-            else if(getotherarrows[i].classList.contains('left_side_view') && e.target.classList.contains('front_view')){
-               
-                getImage.src="./virtual_asset/images/haojueblue/front_view.png";
-        
-                getotherarrows[i].classList.remove('left_side_view');
-                e.target.classList.remove('front_view');
-    
-                getotherarrows[i].classList.add('front_right');
-                e.target.classList.add('front_left');
-                console.log('Target', e.target.classList)
-                console.log('Non-Target',getotherarrows[i].classList)
-  
-            }
-            //Push 1
-            else if(getotherarrows[i].classList.contains('front_view') && e.target.classList.contains('left_side_view')){
-               
-                getImage.src="./virtual_asset/images/haojueblue/left_side_view.png";
-
-                openDoorIcon(element)
-                getotherarrows[i].classList.remove('front_view');
-                e.target.classList.remove('left_side_view');
-
-                 getotherarrows[i].classList.add('left_side_view');
-                 e.target.classList.add('left_rear_side');
-
-                 
-
-                 console.log('Target', e.target.classList)
-                 console.log('Non-Target',getotherarrows[i].classList)
-  
-            }
-            //Reverse
-            else if(getotherarrows[i].classList.contains('left_rear_side') && e.target.classList.contains('left_side_view')){
-                removeIcon(element)
-                getImage.src="./virtual_asset/images/haojueblue/left_front_3qt.png";
-        
-                getotherarrows[i].classList.remove('left_rear_side');
-                e.target.classList.remove('left_side_view');
-
-                getotherarrows[i].classList.add('front_right');
-                e.target.classList.add('front_left');
-                
-                console.log('Target', e.target.classList)
-                console.log('Non-Target',getotherarrows[i].classList)
-
-            }
-            else if(getotherarrows[i].classList.contains('front_right') && e.target.classList.contains('front_left')){
-                removeIcon(element)
-                getImage.src="./virtual_asset/images/haojueblue/front_view.png";
-        
-                getotherarrows[i].classList.remove('front_right');
-                e.target.classList.remove('front_left');
-
-                getotherarrows[i].classList.add('front_right');
-                e.target.classList.add('front_left');
-                
-                console.log('Target', e.target.classList)
-                console.log('Non-Target',getotherarrows[i].classList)
-
-            }
-            //Push 2
-            else if(getotherarrows[i].classList.contains('left_side_view') && e.target.classList.contains('left_rear_side')){
-                removeIcon(element)
-                getImage.src="./virtual_asset/images/haojueblue/left_rear_3qt.png";
-        
-                getotherarrows[i].classList.remove('left_side_view');
-                e.target.classList.remove('left_rear_side');
-
-                getotherarrows[i].classList.add('left_side_view');
-                e.target.classList.add('back_view');
-                
-                console.log('Target', e.target.classList)
-                console.log('Non-Target',getotherarrows[i].classList)
-            }
-            //Reverse
-            else if(getotherarrows[i].classList.contains('back_view') && e.target.classList.contains('left_side_view')){
-                openDoorIcon(element)
-                getImage.src="./virtual_asset/images/haojueblue/left_side_view.png";
-        
-                getotherarrows[i].classList.remove('back_view');
-                e.target.classList.remove('left_side_view');
-
-                getotherarrows[i].classList.add('left_rear_side');
-                e.target.classList.add('left_side_view');
-                
-                console.log('Target', e.target.classList)
-                console.log('Non-Target',getotherarrows[i].classList)
-            }
-            //Push 3
-            else if(getotherarrows[i].classList.contains('left_side_view') && e.target.classList.contains('back_view')){
-                openDoorIcon(element)
-                getImage.src="./virtual_asset/images/haojueblue/rear.png";
-        
-                getotherarrows[i].classList.remove('left_side_view');
-                e.target.classList.remove('back_view');
-
-                getotherarrows[i].classList.add('left_rear_side');
-                e.target.classList.add('right_rear_side');
-                
-                
-                console.log('Target', e.target.classList)
-                console.log('Non-Target',getotherarrows[i].classList)
-            }
-            //Reverse
-            else if(getotherarrows[i].classList.contains('right_rear_side') && e.target.classList.contains('left_rear_side')){
-                removeIcon(element)
-                getImage.src="./virtual_asset/images/haojueblue/left_rear_3qt.png";
-        
-                getotherarrows[i].classList.remove('right_rear_side');
-                e.target.classList.remove('left_rear_side');
-
-                getotherarrows[i].classList.add('back_view');
-                e.target.classList.add('left_side_view');
-            
-                
-                
-                console.log('Target', e.target.classList)
-                console.log('Non-Target',getotherarrows[i].classList)
-            }
-            //Push 4
-            else if(getotherarrows[i].classList.contains('left_rear_side') && e.target.classList.contains('right_rear_side')){
-                removeIcon(element)
-                getImage.src="./virtual_asset/images/haojueblue/right_rear_3qt.png";
-        
-                getotherarrows[i].classList.remove('left_rear_side');
-                e.target.classList.remove('right_rear_side');
-
-                getotherarrows[i].classList.add('back_view');
-                e.target.classList.add('right_side_view');
-                
-            }
-            //Reverse
-            else if(getotherarrows[i].classList.contains('right_side_view') && e.target.classList.contains('back_view')){
-                removeIcon(element)
-                getImage.src="./virtual_asset/images/haojueblue/rear.png";
-        
-                getotherarrows[i].classList.remove('right_side_view');
-                e.target.classList.remove('back_view');
-
-                getotherarrows[i].classList.add('right_rear_side');
-                e.target.classList.add('left_rear_side');
-                
-            }
-            //Push 5
-            else if(getotherarrows[i].classList.contains('back_view') && e.target.classList.contains('right_side_view')){
-                removeIcon(element)
-                getImage.src="./virtual_asset/images/haojueblue/right_side.png";
-        
-                getotherarrows[i].classList.remove('back_view');
-                e.target.classList.remove('right_side_view');
-
-                getotherarrows[i].classList.add('left_rear_side');
-                 e.target.classList.add('right_front_side');
-                
-            }
-            //Reverse
-            else if(getotherarrows[i].classList.contains('right_front_side') && e.target.classList.contains('left_rear_side')){
-                removeIcon(element)
-                getImage.src="./virtual_asset/images/haojueblue/right_rear_3qt.png";
-        
-                getotherarrows[i].classList.remove('right_front_side');
-                e.target.classList.remove('left_rear_side');
-
-                getotherarrows[i].classList.add('right_side_view');
-                e.target.classList.add('back_view');
-                
-            }
-            //Push 6
-            else if(getotherarrows[i].classList.contains('left_rear_side') && e.target.classList.contains('right_front_side')){
-                removeIcon(element)
-                getImage.src="./virtual_asset/images/haojueblue/right_front_3qt.png";
-        
-                getotherarrows[i].classList.remove('left_rear_side');
-                e.target.classList.remove('right_front_side');
-
-                getotherarrows[i].classList.add('right_side_view');
-                e.target.classList.add('front_view');
-                
-            }
-            //Reverse
-            else if(getotherarrows[i].classList.contains('front_view') && e.target.classList.contains('right_side_view')){
-                removeIcon(element)
-                getImage.src="./images/haojueblue/right_side.png";
-            
-                getotherarrows[i].classList.remove('front_view');
-                e.target.classList.remove('right_side_view');
-
-                getotherarrows[i].classList.add('right_front_side');
-                e.target.classList.add('left_rear_side');
-                
-            }
-            //Push 7
-            else if(getotherarrows[i].classList.contains('right_side_view') && e.target.classList.contains('front_view')){
-                removeIcon(element)
-                getImage.src="./virtual_asset/images/haojueblue/front_view.png";
-        
-                getotherarrows[i].classList.remove('right_side_view');
-                e.target.classList.remove('front_view');
-
-                getotherarrows[i].classList.add('front_left');
-                e.target.classList.add('front_right');
-                
-            }
-            //Next Left 360
-            else if(getotherarrows[i].classList.contains('front_right') && e.target.classList.contains('front_left')){
-                
-               console.log('Click');
-  
-            }
-            
-            
-        }
-        
-        
-    })
-}
-
-function openDoorIcon(element){
-    var div = document.createElement('div');
-    
                 var img = document.createElement('img');
                 img.src="./virtual_asset/images/open1.png"
-                img.setAttribute('class','imageOpen blink-image');
+                img.setAttribute('class','imageOpen blink-image ');
                 img.setAttribute('id','opencar')
                 div.appendChild(img);
-                div.classList.add('openDiv')
-            element.appendChild(div);
-            console.log(div)
+                // div.classList.add('openDiv')
+                element.appendChild(img);
+              
 
-            document.querySelector('.openDiv').addEventListener('click',function(e){
+            document.querySelector('.imageOpen').addEventListener('click',function(e){
+                
                 const x = document.getElementById('displayInner');
                 x.classList.add('nativemodal')
                 var div = document.createElement('div');
                 var img = document.createElement('img');
                 var help = document.createElement('img');
                 var close = document.createElement('img');
-                img.src="./virtual_asset/images/haojueblue/dashboard.png"
+                img.src=`./virtual_asset/images/${bikename}/dashboard.png`
+                
                 help.src="./virtual_asset/images/help.png"
                 close.src="./virtual_asset/images/close.png"
                 
@@ -347,9 +89,10 @@ function openDoorIcon(element){
 }
 
 function removeIcon(element){
-    var icon = document.querySelector('.openDiv')
+    var icon = document.querySelector('.imageOpen')
     if(icon){
         element.removeChild(icon)
     }
     
 }
+
