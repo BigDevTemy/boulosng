@@ -1,8 +1,33 @@
+document.querySelector('.productsDiv').addEventListener('click',function(e){
+    // console.log(e.target.classList)
+    // console.log(e.target.textContent);
+    // e.target.classList.add('active');
+    // console.log(e.target.classList)
+    var i = document.querySelector('.productsDiv');
+   
+    for(var x=0; x<i.children.length;x++){
+        
+        if(i.children[x].classList.contains('active')){
+            i.children[x].classList.remove('active');
+        }
+        e.target.classList.add('active');
+    }
+
+    loadImage(e.target.textContent);
+    
+})
+
+
+
+
+
 function loadImage(){
     const cover = document.createElement("div");
     cover.setAttribute('class','cover')
     const start = document.createElement("div");
     const end = document.createElement("div");
+   
+
     const node = document.createTextNode("Click Here to Start.");
     const nodeII = document.createTextNode("Reverse Trend.");
     start.appendChild(node);
@@ -12,23 +37,26 @@ function loadImage(){
 
     const maincar = document.createElement('img');
     const manageDiv = document.createElement('div');
+    
 
     manageDiv.setAttribute('class','manageDiv')
-    maincar.src="./virtual_asset/images/cars/front_view.png"
+    maincar.src="./virtual_asset/images/haojueblue/front_view.png"
     maincar.setAttribute('class','mainCar')
-
+   
     const side_left = document.createElement('img');
     side_left.src="./virtual_asset/images/restore.png"
-    side_left.setAttribute('class','blink-image front_left')
+    side_left.setAttribute('class','blink-image front_left sideleft')
     
 
     const side_right = document.createElement('img');
     side_right.src="./virtual_asset/images/white_arrow.png"
-    side_right.setAttribute('class','blink-image front_right')
+    side_right.setAttribute('class','blink-image front_right sideright')
     const element = document.getElementById("main");
+    
 
-    element.appendChild(side_left);
-    element.appendChild(maincar)
+    // element.appendChild(nav)
+    element.appendChild(side_left)
+    element.appendChild(maincar);
     element.appendChild(side_right);
 
     trackClick(element);
@@ -38,14 +66,15 @@ function loadImage(){
 function trackClick(element){
    
     element.addEventListener('click',function(e){
-        console.log(e.target.classList)
+        // console.log(e.target.classList)
         var getotherarrows = document.querySelectorAll('.blink-image');
         const getImage = document.querySelector('.mainCar')
         for(var i=0;i<getotherarrows.length;i++){
             if(getotherarrows[i].classList.contains('front_left') && e.target.classList.contains('front_right')){
                 
-                getImage.src="./virtual_asset/images/cars/left_front_3qt.png";
-        
+                getImage.src="./virtual_asset/images/haojueblue/left_front_3qt.png";
+                // getImage.style.marginTop = "250px"
+                // getImage.style.marginLeft = "50px"
                 getotherarrows[i].classList.remove('front_left');
                 e.target.classList.remove('front_right');
     
@@ -58,7 +87,7 @@ function trackClick(element){
             //Reverse_above
             else if(getotherarrows[i].classList.contains('left_side_view') && e.target.classList.contains('front_view')){
                
-                getImage.src="./virtual_asset/images/cars/front_view.png";
+                getImage.src="./virtual_asset/images/haojueblue/front_view.png";
         
                 getotherarrows[i].classList.remove('left_side_view');
                 e.target.classList.remove('front_view');
@@ -72,7 +101,7 @@ function trackClick(element){
             //Push 1
             else if(getotherarrows[i].classList.contains('front_view') && e.target.classList.contains('left_side_view')){
                
-                getImage.src="./virtual_asset/images/cars/left_side_view.png";
+                getImage.src="./virtual_asset/images/haojueblue/left_side_view.png";
 
                 openDoorIcon(element)
                 getotherarrows[i].classList.remove('front_view');
@@ -90,7 +119,7 @@ function trackClick(element){
             //Reverse
             else if(getotherarrows[i].classList.contains('left_rear_side') && e.target.classList.contains('left_side_view')){
                 removeIcon(element)
-                getImage.src="./virtual_asset/images/cars/left_front_3qt.png";
+                getImage.src="./virtual_asset/images/haojueblue/left_front_3qt.png";
         
                 getotherarrows[i].classList.remove('left_rear_side');
                 e.target.classList.remove('left_side_view');
@@ -104,7 +133,7 @@ function trackClick(element){
             }
             else if(getotherarrows[i].classList.contains('front_right') && e.target.classList.contains('front_left')){
                 removeIcon(element)
-                getImage.src="./virtual_asset/images/cars/front_view.png";
+                getImage.src="./virtual_asset/images/haojueblue/front_view.png";
         
                 getotherarrows[i].classList.remove('front_right');
                 e.target.classList.remove('front_left');
@@ -119,7 +148,7 @@ function trackClick(element){
             //Push 2
             else if(getotherarrows[i].classList.contains('left_side_view') && e.target.classList.contains('left_rear_side')){
                 removeIcon(element)
-                getImage.src="./virtual_asset/images/cars/left_rear_3qt.png";
+                getImage.src="./virtual_asset/images/haojueblue/left_rear_3qt.png";
         
                 getotherarrows[i].classList.remove('left_side_view');
                 e.target.classList.remove('left_rear_side');
@@ -133,7 +162,7 @@ function trackClick(element){
             //Reverse
             else if(getotherarrows[i].classList.contains('back_view') && e.target.classList.contains('left_side_view')){
                 openDoorIcon(element)
-                getImage.src="./virtual_asset/images/cars/left_side_view.png";
+                getImage.src="./virtual_asset/images/haojueblue/left_side_view.png";
         
                 getotherarrows[i].classList.remove('back_view');
                 e.target.classList.remove('left_side_view');
@@ -147,7 +176,7 @@ function trackClick(element){
             //Push 3
             else if(getotherarrows[i].classList.contains('left_side_view') && e.target.classList.contains('back_view')){
                 openDoorIcon(element)
-                getImage.src="./virtual_asset/images/cars/rear.png";
+                getImage.src="./virtual_asset/images/haojueblue/rear.png";
         
                 getotherarrows[i].classList.remove('left_side_view');
                 e.target.classList.remove('back_view');
@@ -162,7 +191,7 @@ function trackClick(element){
             //Reverse
             else if(getotherarrows[i].classList.contains('right_rear_side') && e.target.classList.contains('left_rear_side')){
                 removeIcon(element)
-                getImage.src="./virtual_asset/images/cars/left_rear_3qt.png";
+                getImage.src="./virtual_asset/images/haojueblue/left_rear_3qt.png";
         
                 getotherarrows[i].classList.remove('right_rear_side');
                 e.target.classList.remove('left_rear_side');
@@ -178,7 +207,7 @@ function trackClick(element){
             //Push 4
             else if(getotherarrows[i].classList.contains('left_rear_side') && e.target.classList.contains('right_rear_side')){
                 removeIcon(element)
-                getImage.src="./virtual_asset/images/cars/right_rear_3qt.png";
+                getImage.src="./virtual_asset/images/haojueblue/right_rear_3qt.png";
         
                 getotherarrows[i].classList.remove('left_rear_side');
                 e.target.classList.remove('right_rear_side');
@@ -190,7 +219,7 @@ function trackClick(element){
             //Reverse
             else if(getotherarrows[i].classList.contains('right_side_view') && e.target.classList.contains('back_view')){
                 removeIcon(element)
-                getImage.src="./virtual_asset/images/cars/rear.png";
+                getImage.src="./virtual_asset/images/haojueblue/rear.png";
         
                 getotherarrows[i].classList.remove('right_side_view');
                 e.target.classList.remove('back_view');
@@ -202,7 +231,7 @@ function trackClick(element){
             //Push 5
             else if(getotherarrows[i].classList.contains('back_view') && e.target.classList.contains('right_side_view')){
                 removeIcon(element)
-                getImage.src="./virtual_asset/images/cars/right_side.png";
+                getImage.src="./virtual_asset/images/haojueblue/right_side.png";
         
                 getotherarrows[i].classList.remove('back_view');
                 e.target.classList.remove('right_side_view');
@@ -214,7 +243,7 @@ function trackClick(element){
             //Reverse
             else if(getotherarrows[i].classList.contains('right_front_side') && e.target.classList.contains('left_rear_side')){
                 removeIcon(element)
-                getImage.src="./virtual_asset/images/cars/right_rear_3qt.png";
+                getImage.src="./virtual_asset/images/haojueblue/right_rear_3qt.png";
         
                 getotherarrows[i].classList.remove('right_front_side');
                 e.target.classList.remove('left_rear_side');
@@ -226,7 +255,7 @@ function trackClick(element){
             //Push 6
             else if(getotherarrows[i].classList.contains('left_rear_side') && e.target.classList.contains('right_front_side')){
                 removeIcon(element)
-                getImage.src="./virtual_asset/images/cars/right_front_3qt.png";
+                getImage.src="./virtual_asset/images/haojueblue/right_front_3qt.png";
         
                 getotherarrows[i].classList.remove('left_rear_side');
                 e.target.classList.remove('right_front_side');
@@ -238,7 +267,7 @@ function trackClick(element){
             //Reverse
             else if(getotherarrows[i].classList.contains('front_view') && e.target.classList.contains('right_side_view')){
                 removeIcon(element)
-                getImage.src="./images/cars/right_side.png";
+                getImage.src="./images/haojueblue/right_side.png";
             
                 getotherarrows[i].classList.remove('front_view');
                 e.target.classList.remove('right_side_view');
@@ -250,7 +279,7 @@ function trackClick(element){
             //Push 7
             else if(getotherarrows[i].classList.contains('right_side_view') && e.target.classList.contains('front_view')){
                 removeIcon(element)
-                getImage.src="./virtual_asset/images/cars/front_view.png";
+                getImage.src="./virtual_asset/images/haojueblue/front_view.png";
         
                 getotherarrows[i].classList.remove('right_side_view');
                 e.target.classList.remove('front_view');
@@ -292,7 +321,7 @@ function openDoorIcon(element){
                 var img = document.createElement('img');
                 var help = document.createElement('img');
                 var close = document.createElement('img');
-                img.src="./virtual_asset/images/cars/dashboard.png"
+                img.src="./virtual_asset/images/haojueblue/dashboard.png"
                 help.src="./virtual_asset/images/help.png"
                 close.src="./virtual_asset/images/close.png"
                 
